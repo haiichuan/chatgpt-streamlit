@@ -151,7 +151,7 @@ def render_sidebar_gpt_config_tab(zone):
         value=2000,
         step=1,
         min_value=100,
-        max_value=4000,
+        max_value=2000,
         help="The maximum number of tokens to generate in the completion",
     )
     st.session_state["params"]["stream"] = zone.checkbox(
