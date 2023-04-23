@@ -4,9 +4,9 @@ import openai
 import pandas as pd
 import streamlit as st
 
-from utils import load_prompt_templates, load_prompts
+from utils import load_prompt_templates, load_prompts, render_footer, render_github_info
 
-st.set_page_config(page_title="ChatGPT", page_icon="🌐")
+st.set_page_config(page_title="ChatGPT Web", page_icon="🤖")
 
 
 @st.cache_resource
@@ -219,14 +219,16 @@ def render_download_zone(zone):
 
 def render_sidebar():
     chat_name_container = st.sidebar.container()
-    chat_config_expander = st.sidebar.expander('Chat configuration', True)
-    tab_gpt, tab_prompt = chat_config_expander.tabs(['ChatGPT', 'Prompt'])
+    chat_config_expander = st.sidebar.expander('⚙️ Chat configuration', True)
+    tab_gpt, tab_prompt = chat_config_expander.tabs(['🌐     ChatGPT', '👥 Prompt'])
     download_zone = st.sidebar.empty()
+    github_zone = st.sidebar.empty()
 
     render_sidebar_gpt_config_tab(tab_gpt)
     render_sidebar_prompt_config_tab(tab_prompt)
     render_sidebar_chat_management(chat_name_container)
     render_download_zone(download_zone)
+    render_github_info(github_zone)
 
 
 def render_user_message(message, zone):
@@ -328,7 +330,10 @@ def render_chat(chat_name):
                    max_chars=2000,
                    label_visibility='collapsed')
 
-    col2.form_submit_button("🚀", on_click=handle_ask)
+    with col2.container():
+        for _ in range(2):
+            st.write('\n')
+        st.form_submit_button("🚀", on_click=handle_ask)
     stop_generate_zone = conversation_zone.empty()
     re_generate_zone = conversation_zone.empty()
 
@@ -343,13 +348,6 @@ def render_chat(chat_name):
         render_regenerate_button(chat, re_generate_zone)
 
     render_footer()
-
-
-def render_footer():
-    st.markdown(
-        "<br><hr><center>Made with ❤️ by ChatGPT and Streamlit. <strong>HaiiChuan</strong></center><hr>",
-        unsafe_allow_html=True)
-    st.markdown("<style> footer {visibility: hidden;} </style>", unsafe_allow_html=True)
 
 
 def get_openai_response(messages):

@@ -9,6 +9,8 @@ from streamlit.source_util import (
     _on_pages_changed
 )
 
+from utils import render_footer
+
 
 def hide_multi_pages():
     # https://discuss.streamlit.io/t/hide-show-pages-in-multipage-app-based-on-conditions/28642
@@ -74,14 +76,14 @@ def check_password(form):
         return False
 
 
-def show_welcome():
+def render_welcome():
     st.header('😃 Greetings!')
 
 
 if __name__ == '__main__':
     if st.session_state.get("authenticated") or not st.secrets.need_login:
         load_multi_pages()
-        show_welcome()
+        render_welcome()
     else:
         hide_multi_pages()
         login_form = st.empty()
@@ -89,4 +91,5 @@ if __name__ == '__main__':
             login_form.empty()
             st.balloons()
             load_multi_pages()
-            show_welcome()
+            render_welcome()
+    render_footer()

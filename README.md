@@ -1,5 +1,7 @@
 # chatgpt-streamlit
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chat-web.streamlit.app)
+
 Yet another chatgpt web made by streamlit!
 
 Online Demo on [Huggingface](https://huggingface.co/spaces/Willder/chatgpt-streamlit)
