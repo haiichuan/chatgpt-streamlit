@@ -1,6 +1,6 @@
 # chatgpt-streamlit
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chat-web.streamlit.app)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://haiichuan-chatgpt-streamlit--home-cbbsux.streamlit.app/)
 
 Yet another chatgpt web made by streamlit!
 
