@@ -79,6 +79,7 @@ def check_password(form):
 
 def nav_page(page_name, timeout_secs=3):
     # https://github.com/streamlit/streamlit/issues/4832
+    # https://discuss.streamlit.io/t/navigate-multipage-app-with-buttons-instead-of-sidebar/27986/8
     nav_script = """
         <script type="text/javascript">
             function attempt_nav_page(page_name, start_time, timeout_secs) {
